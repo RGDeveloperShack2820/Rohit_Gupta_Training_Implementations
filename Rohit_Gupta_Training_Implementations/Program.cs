@@ -1000,7 +1000,7 @@ void executeKISS()
     Console.WriteLine(kISSPrinciple.getweekday1(6));
 
     Console.Write("Simple Implementation : ");
-    Console.WriteLine(kISSPrinciple.getweekday1(6));
+    Console.WriteLine(kISSPrinciple.getweekday2(6));
 
 
 }
