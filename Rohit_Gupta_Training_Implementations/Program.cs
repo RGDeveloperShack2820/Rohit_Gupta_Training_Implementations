@@ -40,6 +40,7 @@ using Design_Patterns_Implementation.Mediator_Pattern;
 using Design_Patterns.SOLID_Principles.K.I.S.S_principle;
 using Design_Patterns.SOLID_KISS_DRY_YAGNI_Principles.YAGNI_principle;
 using Design_Patterns.SOLID_KISS_DRY_YAGNI_Principles.DRY_Principle;
+using Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Custom_Collection;
 
 void executeBuilderPattern()
 {
@@ -631,8 +632,23 @@ void printMainMenu()
     Console.WriteLine("1. OOPS Concepts");
     Console.WriteLine("2. Design Principles");
     Console.WriteLine("3. Design Patterns");
+    Console.WriteLine("4. Collections");
 
     Console.Write("\n\nEnter Choice : ");
+}
+
+void printCollectionsMenu()
+{
+    Console.WriteLine("--------------------Collections Implementations---------------------\n");
+    Console.WriteLine("Choose From The Given Implementations Below :\n");
+
+    Console.WriteLine("1. System.Collections Collections");
+    Console.WriteLine("2. System.Collections.Generic Collections");
+    Console.WriteLine("3. System.Collections.Concurrent Collections");
+    Console.WriteLine("4. My Custom Collection");
+
+    Console.Write("\n\nEnter Choice : ");
+
 }
 
 void executeMain()
@@ -663,6 +679,14 @@ void executeMain()
                 break;
             }
 
+        case "4":
+            {
+                executeCollections();
+                break;
+            }
+
+
+
         default :
             {
 
@@ -672,6 +696,59 @@ void executeMain()
             }
     }
 
+}
+
+void executeCollections()
+{
+    printCollectionsMenu();
+
+    String input = Console.ReadLine();
+
+    Console.Clear();
+
+    switch (input)
+    {
+
+        case "1":
+            {
+                
+                break;
+            }
+
+        case "2":
+            {
+                
+                break;
+            }
+        case "3":
+            {
+                
+                break;
+            }
+
+        case "4":
+            {
+                executeMyCustomCollection();
+                break;
+            }
+
+
+
+        default:
+            {
+
+                Console.WriteLine("Invalid Input");
+                break;
+
+            }
+    }
+}
+
+void executeMyCustomCollection()
+{
+    Console.WriteLine("4. My Custom Collection\n");
+    MyCustomCollection myCustomCollection = new MyCustomCollection();
+    myCustomCollection.execute();
 }
 
 void executeSolidPrinciples()
@@ -1022,3 +1099,4 @@ void executenDRY()
 }
 
 executeMain();
+
