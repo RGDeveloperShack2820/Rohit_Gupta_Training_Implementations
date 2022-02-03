@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Custom_Collection
 {
-    internal class Monuments
+    internal class Monuments  
     {
         string name;
         string location;
@@ -29,5 +29,9 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
             get { return location; }
             set { this.location = value; }
         }
+
+      
+
+      
     }
 }

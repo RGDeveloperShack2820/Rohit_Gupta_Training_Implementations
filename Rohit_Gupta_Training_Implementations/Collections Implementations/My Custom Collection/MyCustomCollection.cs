@@ -74,6 +74,23 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
                 Console.WriteLine($"\nName : {item.Name} | Location : {item.Location}");
             }
 
+            Console.WriteLine();
+            rg.Add(m2);
+            rg.Add(m3);
+            rg.Add(m4);
+            
+            Console.WriteLine("\nComparison Implementation\n");
+
+            Console.WriteLine("rg CompareTo rg1 : "+rg.CompareTo(rg1));
+            Console.WriteLine("rg Equals rg1 : "+rg.Equals(rg1));
+
+            rg1.Update(2, m3);
+
+            Console.WriteLine("rg Equals rg1 : " + rg.Equals(rg1));
+
+            Console.WriteLine("\nrg CompareTo rg : " + rg.CompareTo(rg));
+            Console.WriteLine("rg Equals rg : " + rg.Equals(rg));
+
         }
     }
 }

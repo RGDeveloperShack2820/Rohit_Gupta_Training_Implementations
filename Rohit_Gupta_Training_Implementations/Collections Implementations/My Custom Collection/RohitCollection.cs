@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Custom_Collection
 {
-    internal class RohitCollection<T> : IEnumerator,IEnumerable
+    internal class RohitCollection<T> : IEnumerator,IEnumerable , IComparable
     {
         private List<T> _elements;
         private int position =-1;
@@ -150,5 +150,40 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
             position = -1;
             
         }
+
+        public int CompareTo(object? obj)
+        {
+
+
+            return this == obj ? 1 : -1 ;
+        }
+
+        public override bool Equals(object? other)
+        {
+
+            RohitCollection<T> rohitCollection = other as RohitCollection<T>;
+
+            for (int i = 0; i < this._elements.Count; i++)
+            {
+
+                try
+                {
+                    if (!this._elements[i].Equals(rohitCollection._elements[i]))
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
+            }
+
+            return true;
+
+        }
+
+       
     }
 }
