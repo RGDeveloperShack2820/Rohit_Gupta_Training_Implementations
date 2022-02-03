@@ -15,48 +15,58 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
             Monuments m3 = new Monuments("Big Ben","LONDON");
             Monuments m4 = new Monuments("Pyramid","EGYPT");
 
-            RohitCollection rg=new RohitCollection();
+            RohitCollection<Monuments> rg=new RohitCollection<Monuments>();
+
+            
 
             Console.WriteLine("Default Capacity : "+rg.Capacity+"\n");
 
+            Console.Write(m1.Name);
             rg.Add(m1);
+            Console.Write(m2.Name);
             rg.Add(m2);
+            Console.Write(m3.Name);
             rg.Add(m3);
 
-            Console.WriteLine("Updated Capacity : " + rg.Capacity+"\n");
-
+            Console.Write(m4.Name);
             rg.Add(m4);
 
+            Console.Write(m4.Name);
             rg.Remove(3);
 
-            Console.WriteLine("Updated Capacity : " + rg.Capacity+"\n");
+            Console.Write(m3.Name);
+            rg.Remove(2);
 
-            rg.Add(m4);
+            Console.Write(m2.Name);
+            rg.Remove(1);
 
-            Console.WriteLine("Updated Capacity : " + rg.Capacity + "\n");
+           
+            RohitCollection<Monuments> rg1 = new RohitCollection<Monuments>(1);
 
-            RohitCollection rg1=new RohitCollection(1);
 
-            Console.WriteLine("New Collection made with Capacity : 1\n");
+            Console.WriteLine("\nNew Collection made with Capacity : 1\n");
 
             Console.WriteLine("Default Capacity : " + rg1.Capacity + "\n");
 
+            Console.Write(m1.Name);
             rg1.Add(m1);
+            Console.Write(m2.Name);
             rg1.Add(m2);
 
             rg1.CanExtend=true;
-            Console.WriteLine("Given Permission to Extend\n");
+            Console.WriteLine("\nGiven Permission to Extend\n");
 
+            Console.Write(m2.Name);
             rg1.Add(m2);
             
 
-            Console.WriteLine("Updated Capacity : " + rg1.Capacity + "\n");
-
+            Console.Write(m3.Name);
             rg1.Add(m3);
+            Console.Write(m4.Name);
             rg1.Add(m4);
 
-            Console.WriteLine("Updated Capacity : " + rg1.Capacity + "\n");
 
+            Console.Write(m3.Name);
             rg1.Update(2, m4);
 
             foreach (Monuments item in rg1)

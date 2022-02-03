@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Custom_Collection
 {
-    internal class RohitCollection : IEnumerator,IEnumerable
+    internal class RohitCollection<T> : IEnumerator,IEnumerable
     {
-        private Monuments[] _monuments;
+        private List<T> _elements;
         private int position =-1;
-        private int current = -1;
-        private int capacity=2;
+        private int capacity;
         private Boolean canExtend=true;
 
         public RohitCollection()
         {
-            _monuments = new Monuments[this.capacity];
+            this.capacity = 2;
+            _elements = new List<T>(capacity);
         }
 
         public RohitCollection(int capacity)
         {
             canExtend = false;
             this.capacity = capacity;
-            _monuments=new Monuments[capacity];
+            _elements=new List<T>(capacity);
         }
 
         public Boolean CanExtend
@@ -37,70 +37,83 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
             get { return capacity; }
         }
         
-        public void Add(Monuments monument)
+        public void Add(T element)
         {
             
-            if (current < this.capacity-1)
+            if (_elements.Count < this.capacity)
             {
-                current++;
-                _monuments[current] = monument;
-                Console.WriteLine($"{monument.Name} Added ");
-               
+                
+                _elements.Add(element);
+                Console.WriteLine(" Element Added");
+
+
             }
             else if (canExtend)
             {
-                current++;
-                Array.Resize(ref _monuments, capacity*2);
-                _monuments[current]= monument;
-                capacity=capacity*2;
-                Console.WriteLine($"{monument.Name} Added ");
+
+                Console.WriteLine(" Element Added");
+                UpdateCapacity(false);
+                _elements.Add(element);
+
+                
             }
             else 
             {
-                Console.WriteLine($"{monument.Name} Additon Failed ");
+                Console.WriteLine(" Additon Failed");
                 
             }
         }
 
         public void Remove(int index)
         {
-            if (index < _monuments.Length)
+            
+            if (index < _elements.Count)
             {
-                Monuments[] new_monuments = new Monuments[this.capacity - 1];
-                capacity--;
-
-                for (int i = 0, j = 0; i < _monuments.Length; i++)
-                {
-                    if (i != index)
-                        new_monuments[j++] = _monuments[i];
-                    else
-                    {
-                        Console.WriteLine($"{_monuments[i].Name} Removed ");
-                    }
-                }
-
-                _monuments = new_monuments;
+               _elements.RemoveAt(index);
+                Console.WriteLine(" Element Deleted");
             }
             else
             {
-                Console.WriteLine("Deletion Failed ");
-               
+                Console.WriteLine(" Deletion Failed ");
             }
+
+            if(_elements.Count<(capacity/2))
+                UpdateCapacity(true);
+        }
+
+        private void UpdateCapacity(Boolean shrink)
+        {
+            if (shrink)
+            {
+                List<T> _newElements = new List<T>(capacity / 2);
+                _newElements = _elements.ToList<T>();
+                _elements = _newElements;
+                capacity = capacity / 2;
+            }
+            else
+            {
+                List<T> _newElements = new List<T>(capacity * 2);
+                _newElements = _elements.ToList<T>();
+                _elements = _newElements;
+                capacity = capacity * 2;
+            }
+
+            Console.WriteLine("Capacity Updated To : " + capacity);
 
         }
 
-        public void Update(int index, Monuments monument)
+        public void Update(int index, T element)
         {
             try
             {
-                Console.WriteLine($"{ _monuments[index].Name} Updated with {monument.Name}");
-                _monuments[index] = monument;
                 
+                _elements[index] = element;
 
+                Console.WriteLine(" Element Updated");
             }
-            catch (IndexOutOfRangeException)
+            catch (Exception)
             {
-                Console.WriteLine("Updation Failed ");
+                Console.WriteLine(" Updation Failed ");
             }
         }
 
@@ -110,9 +123,9 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
             {
                 try
                 {
-                    return _monuments[position];
+                    return _elements[position];
                 }
-                catch (IndexOutOfRangeException)
+                catch (Exception)
                 {
                     throw new InvalidOperationException();
                 }
@@ -129,7 +142,7 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
         public bool MoveNext()
         {
             position++;
-            return position < _monuments.Length;
+            return position < _elements.Count;
         }
 
         public void Reset()
@@ -137,6 +150,5 @@ namespace Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Cu
             position = -1;
             
         }
-
     }
 }
