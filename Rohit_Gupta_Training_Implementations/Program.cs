@@ -41,6 +41,7 @@ using Design_Patterns.SOLID_Principles.K.I.S.S_principle;
 using Design_Patterns.SOLID_KISS_DRY_YAGNI_Principles.YAGNI_principle;
 using Design_Patterns.SOLID_KISS_DRY_YAGNI_Principles.DRY_Principle;
 using Rohit_Gupta_Training_Implementations.Collections_Implementations.My_Custom_Collection;
+using Rohit_Gupta_Training_Implementations.Collections_Implementations.System.Collection.Specialized;
 
 void executeBuilderPattern()
 {
@@ -1098,5 +1099,52 @@ void executenDRY()
     DepartmentInfo.execute(); 
 }
 
-executeMain();
+void executeListDictionary()
+{
+    Console.WriteLine("1. List Dictionary\n");
 
+    ListDictionary_Implementation listDictionary = new ListDictionary_Implementation();
+    listDictionary.execute();
+}
+
+void executeHybridDictionary()
+{
+    Console.WriteLine("2. Hybrid Dictionary\n");
+
+    HybridDictionary_Implementation hybridDictionary = new HybridDictionary_Implementation();
+    hybridDictionary.execute();
+}
+
+void executeNameValueCollection()
+{
+    Console.WriteLine("3. NameValueCollection\n");
+
+    NameValueCollection_Implementation nameValueCollection_Implementation = new NameValueCollection_Implementation();
+    nameValueCollection_Implementation.execute();
+}
+
+void executeOrderedDictionary()
+{
+    Console.WriteLine("4. Ordered Dictionary\n");
+
+    OrderedDictionary_Implementation od = new OrderedDictionary_Implementation();
+    od.execute();
+}
+
+void executeStringCollection()
+{
+    Console.WriteLine("5. String Collection\n");
+
+    StringCollection_Implementation sc = new StringCollection_Implementation();
+    sc.execute();
+}
+
+void executeStringDictionary()
+{
+    Console.WriteLine("6. String Dictionary\n");
+
+    StringDictionary_Implementation sd = new StringDictionary_Implementation();
+    sd.execute();
+}
+
+executeMain();
